@@ -19,7 +19,7 @@ class RekapController extends Controller
      */
     public function create()
     {
-        //
+        return view('rekap.create');
     }
 
     /**

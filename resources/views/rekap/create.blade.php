@@ -7,26 +7,37 @@
             <div
                 class=" bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden py-4 px-4 mx-auto max-w-screen-xl lg:py-8 mb-12">
                 <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Tambah Rekap</h2>
-                <form action="#">
+                    <form action="{{ route('rekap.store') }}" method="post">
+                        @csrf
                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                        <div class="sm:col-span-2">
+                        <div class="w-full">
                             <label for="name"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                            <input type="text" name="name" id="name"
+                            <input type="text" name="nama" id="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Masukan Nama" required="">
                         </div>
                         <div class="w-full">
-                            <label for="brand"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kota</label>
-                            <input type="text" name="brand" id="brand"
+                            <label for="name"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                            <input type="email" name="email" id="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Masukan Kota" required="">
+                                placeholder="Masukan Email" required="">
                         </div>
                         <div class="w-full">
-                            <label for="price"
+                            <label for="brand"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kota</label>
+                                <select id="category" name="kota"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                @foreach ($kota as $item)
+                                        <option value="{{ $item['id'] }}">{{ $item['nama_kota']}}</option>
+                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="w-full">
+                            <label for="price" 
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan/Kelurahan</label>
-                            <input type="number" name="price" id="price"
+                            <input type="text" name="kecamatan_kelurahan" id="price"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Masukan Kecamatan/Kelurahan" required="">
                         </div>
@@ -34,32 +45,29 @@
                             <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 Jenjang
                             </label>
-                            <select id="category"
+                            <select id="category" name="jenjang"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected="">Pilih Jenjang</option>
-                                <option value="TV">TV/Monitors</option>
-                                <option value="PC">PC</option>
-                                <option value="GA">Gaming/Console</option>
-                                <option value="PH">Phones</option>
+                               <option >--Pilih Jenjang--</option>
+                                @foreach ($jenjang as $item)
+                                        <option value="{{ $item['id']}}">{{ $item['nama_jenjang']}}</option>
+                                 @endforeach
                             </select>
                         </div>
                         <div>
                             <label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 Topik Pertanyaan
                             </label>
-                            <select id="category"
+                            <select id="category" name="topik"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected="">Pilih Topik Pertanyaan</option>
-                                <option value="TV">TV/Monitors</option>
-                                <option value="PC">PC</option>
-                                <option value="GA">Gaming/Console</option>
-                                <option value="PH">Phones</option>
+                                @foreach ($topik as $item)
+                                <option value="{{ $item['id'] }}">{{ $item['nama_topik'] }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="sm:col-span-2">
                             <label for="description"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                            <textarea id="description" rows="8"
+                            <textarea id="description" rows="8" name="pesan"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Your description here"></textarea>
                         </div>

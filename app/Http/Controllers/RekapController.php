@@ -43,7 +43,7 @@ class RekapController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('rekap.edit');
     }
 
     /**

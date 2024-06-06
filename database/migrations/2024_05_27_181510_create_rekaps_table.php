@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->foreignId('id_kota');
             $table->foreignId('id_jenjang');
-            $table->string('kecamatan/kelurahan');
+            $table->string('kec_kel');
             $table->foreignId('id_topik');
             $table->string('email');
             $table->string('pesan');

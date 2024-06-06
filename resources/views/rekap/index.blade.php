@@ -149,13 +149,12 @@
                                 <th scope="row"
                                     class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $item['nama'] }}</th>
                                 </th>
-                                <td class="px-4 py-3">{{ $item['kota']}}</td>
-                                <td class="px-4 py-3">{{ $item['kel_kec'] }}</td>
-                                <td class="px-4 py-3">{{ $item['jenjang'] }}</td>
-                                <td class="px-4 py-3">{{ $item['topik'] }}</td>
-                                <td class="px-4 py-3">{{ $item['email'] }}</td>
-                                <td class="px-4 py-3">{{ $item['pesan'] }}
-                                </td>
+                                <td class="px-4 py-3">{{ $item->kota->nama_kota}}</td>
+                                <td class="px-4 py-3">{{ $item->kel_kec }}</td>
+                                <td class="px-4 py-3">{{ $item->jenjang->nama_jenjang }}</td>
+                                <td class="px-4 py-3">{{ $item->topik->nama_topik }}</td>
+                                <td class="px-4 py-3">{{ $item->email}}</td>
+                                <td class="px-4 py-3">{{ $item->pesan }}</td>
                                 <td class="px-4 py-3 flex items-center justify-end">
                                     <button id="apple-imac-27-dropdown-button"
                                         data-dropdown-toggle="apple-imac-27-dropdown"

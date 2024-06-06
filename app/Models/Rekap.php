@@ -16,7 +16,7 @@ class Rekap extends Model
         'id_topik',
         'id_jenjang',
         'id_kota',
-        'kecamatan_kelurahan',
+        'kec_kel',
         'pesan',
     ];
 

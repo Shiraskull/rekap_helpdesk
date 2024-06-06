@@ -60,7 +60,7 @@ class WebController extends Controller
   
       $user = User::where('email', $request->email)->first();
       if (! $user || ! Hash::check($request->password, $user->password)) {
-        return response()->json(['error' => 'Email Atau Password Salah'], 401);
+        return response()->json(['error' => 'Email Atau Password Salah_'], 401);
       };
       return $user->createToken('user login')->plainTextToken;
     }
@@ -72,4 +72,28 @@ class WebController extends Controller
       $kota = Kota::all();
       return $kota;
     }
+    public function rekap(Request $request){
+      $request->validate([
+        'nama' => 'required',
+         'kota' =>'required',
+         'jenjang' =>'required',
+         'kec_kel' =>'required',
+         'topik' =>'required',
+         'email' =>'required',
+         'pesan' =>'required',
+    ]); 
+    
+
+    Rekap::create([
+             'nama' => $request->nama,
+             'id_kota' => $request->kota,
+             'id_jenjang' => $request->jenjang,
+             'kec_kel' => $request->kec_kel,
+             'id_topik' => $request->topik,
+             'email' => $request->email,
+             'pesan' => $request->pesan,
+            ]);;
+     return response()->json('ok');
+    }
 }
+
